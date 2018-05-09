@@ -1,0 +1,24 @@
+﻿@{
+    ViewData["Title"] = "Login Successful!";
+}
+<h2>Login Successful!</h2>
+
+<p>You were successfully logged in.</p>
+
+<p>Username: <b>@ViewData["UPN"]</b></p>
+
+<ul>
+    <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
+    <li><a asp-area="" asp-controller="Home" asp-action="Signout">Log Out</a></li>
+    <li><a href="@ViewData["AdfsLogoutUrl"]" rel="noopener noreferrer" target="_blank">Global Log Out</a></li>
+</ul>
+<br />
+<h3>Claims Information:</h3>
+
+<dl>
+    @foreach (var claim in User.Claims)
+    {
+        <dt>@claim.Type</dt>
+        <dd>@claim.Value</dd>
+    }
+</dl>
